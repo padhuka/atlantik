@@ -37,6 +37,8 @@
                         case 'mcoa' : include_once 'mcoa/mcoa_tab.php'; break;
                         case 'acccash' : include_once 'acccash/acccash_tab.php'; break;
                         case 'accbank' : include_once 'accbank/accbank_tab.php'; break;
+                        case 'cuci' : include_once 'cuci/cuci_tab.php'; break;
+                        case 'salon' : include_once 'salon/salon_tab.php'; break;
                       }
         ?>
 
