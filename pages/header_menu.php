@@ -25,7 +25,7 @@
             <ul class="dropdown-menu">
               <li class="header"><a href="?p=pkb">PKB</a></li> 
               <li class="header"><a href="?p=pkbbukatutup">Buka/Tutup PKB</a></li>   
-               
+               <li class="header"><a href="?p=nonpkb">Non PKB</a></li>   
                           </ul>
           </li><?php } ?>
 
