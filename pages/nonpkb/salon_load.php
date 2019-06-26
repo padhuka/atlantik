@@ -20,6 +20,7 @@
                                     LEFT JOIN t_salon p ON ep.fk_salon=p.id_salon
                                     WHERE fk_nonpkb='$idnonpkb' ORDER BY id ASC";
                                     $rescatat = mysql_query( $sqlcatat );
+                                    //echo $sqlcatat;
                                     while($catat = mysql_fetch_array( $rescatat )){
                                 ?>
                         <tr>

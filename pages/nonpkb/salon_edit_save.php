@@ -15,8 +15,7 @@
 
           $updatesalon = "UPDATE t_nonpkb_salon_detail SET fk_salon='$id_salon',harga_jual_salon='$hargajual', harga_diskon_salon='$hargadiskon',harga_total_nonpkb_salon='$total',diskon_salon='$diskon' WHERE id='$id'";
             mysql_query($updatesalon);
-            echo($updatesalon);
-
+            //echo $updatesalon;
             $sqlsalon= "SELECT sum(harga_jual_salon) AS totjualsalon,sum(harga_diskon_salon) AS totdiskonsalon, sum(harga_total_nonpkb_salon) AS totnonpkbsalon FROM t_nonpkb_salon_detail WHERE fk_nonpkb = '$idnonpkb'";
             $hsalon= mysql_fetch_array(mysql_query($sqlsalon));
             //jml salon
@@ -31,15 +30,11 @@
 
             $sqles= "SELECT sum(total_gross_harga_salon+total_gross_harga_cuci) as total_gross_harga_jasa,sum(total_diskon_rupiah_salon+total_diskon_rupiah_cuci) as total_diskon_rupiah_jasa,sum(total_netto_harga_salon+total_netto_harga_cuci) as total_netto_harga_jasa FROM t_nonpkb WHERE id_nonpkb = '$idnonpkb'";
            
-            $hpes= mysql_fetch_array(mysql_query($sqles));
-
-         
+            $hpes= mysql_fetch_array(mysql_query($sqles));    
 
             $totgrosjasa=$hpes['total_gross_harga_jasa'];
             $totdiskonjasa=$hpes['total_diskon_rupiah_jasa'];
             $totnettojasa=$hpes['total_netto_harga_jasa'];
-
-
 
            $updatenonpkb = "UPDATE t_nonpkb SET total_gross_harga_jasa='$totgrosjasa', total_diskon_rupiah_jasa='$totdiskonjasa',total_netto_harga_jasa='$totnettojasa' WHERE id_nonpkb='$idnonpkb'";
               mysql_query($updatenonpkb);
