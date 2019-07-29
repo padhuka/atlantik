@@ -9,7 +9,7 @@
                           <th>Item</th>
                           <th>Gros</th>
                           <th>Disc</th>
-                          <th>Netto</th>                          
+                          <th>Netto</th>                       
                 </tr>
                 </thead>
                 <tbody>  
@@ -19,16 +19,22 @@
                   $hest= mysql_fetch_array(mysql_query($sqlest));
                 ?>              
                         <tr>
-                          <td>cuci</td>
+                          <td style="font-weight: bold;">Cuci</td>
                           <td><?php echo rupiah2($hest['total_gross_harga_cuci']);?></td>
                           <td><?php echo rupiah2($hest['total_diskon_rupiah_cuci']);?></td>
                           <td><?php echo rupiah2($hest['total_netto_harga_cuci']);?></td>
                         </tr>
                         <tr>
-                          <td>salon</td>
+                          <td style="font-weight: bold;">Salon</td>
                           <td><?php echo rupiah2($hest['total_gross_harga_salon']);?></td>
                           <td><?php echo rupiah2($hest['total_diskon_rupiah_salon']);?></td>
                           <td><?php echo rupiah2($hest['total_netto_harga_salon']);?></td>
+                        </tr> 
+                        <tr>
+                          <td style="font-weight: bold;">Total</td>                          
+                          <td><?php echo rupiah2($hest['total_gross_harga_cuci']+$hest['total_gross_harga_salon']);?></td>
+                          <td><?php echo rupiah2($hest['total_diskon_rupiah_cuci']+$hest['total_diskon_rupiah_salon']);?></td>
+                          <td style="font-weight: bold;"><?php echo rupiah2($hest['total_netto_harga_cuci']+$hest['total_netto_harga_salon']);?></td>
                         </tr>                    	
                 </tfoot>
               </table>

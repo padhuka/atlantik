@@ -3,19 +3,19 @@
    // include_once '../../lib/sess.php';
     include_once '../../lib/config.php';
     include_once '../../lib/fungsi.php';
-    $idestimasi = $_GET['idestimasine'];
+    $idnonpkb = $_GET['idnonpkbne'];
    ?>
 <div class="modal-dialog">
            <div class="modal-content">
                     <div class="modal-header">
-                        <h4 class="modal-title" id="myModalLabel" style="text-align: center;padding-right: 0px">Data Estimasi Panel <button type="button" class="close" aria-label="Close" onclick="$('#ModalPanelShow').modal('hide');"><span>&times;</span></button></h4>                    
+                        <h4 class="modal-title" id="myModalLabel" style="text-align: center;padding-right: 0px">Data nonpkb Salon <button type="button" class="close" aria-label="Close" onclick="$('#ModalSalonShow').modal('hide');"><span>&times;</span></button></h4>                    
                     </div>
                
                     <div class="modal-body">
                      
 
                       <div class="row">
-            <table id="estimasipanel" class="table table-condensed table-bordered table-striped table-hover">
+            <table id="nonpkbSalon" class="table table-condensed table-bordered table-striped table-hover">
                 <thead class="thead-light">
                 <tr>
                           <th>Nama</th>
@@ -28,18 +28,18 @@
                 <tbody>
                 <?php
                                     $j=1;
-                                    $sqlcatat = "SELECT * FROM t_estimasi_panel_detail pd
-                                    LEFT JOIN t_panel p ON p.id_panel=pd.fk_panel
-                                    WHERE fk_estimasi='$idestimasi' ORDER BY id ASC";
+                                    $sqlcatat = "SELECT * FROM t_nonpkb_salon_detail pd
+                                    LEFT JOIN t_Salon p ON p.id_Salon=pd.fk_Salon
+                                    WHERE fk_nonpkb='$idnonpkb' ORDER BY id ASC";
                                     $rescatat = mysql_query( $sqlcatat );
                                     while($catat = mysql_fetch_array( $rescatat )){
-                                         $markpanel= $catat['mark_panel'];
+                                         $markSalon= $catat['mark_Salon'];
                                 ?>
                         <tr>
-                          <td ><?php echo $catat['nama'];if ($markpanel=='1'){echo ' *';}?></td>
-                          <td ><?php echo rupiah2($catat['harga_jual_panel']);?></td>
-                          <td ><?php echo rupiah2($catat['harga_diskon_panel']);?></td>
-                          <td ><?php echo rupiah2($catat['harga_total_estimasi_panel']);?></td>
+                          <td ><?php echo $catat['nama'];if ($markSalon=='1'){echo ' *';}?></td>
+                          <td ><?php echo rupiah2($catat['harga_jual_salon']);?></td>
+                          <td ><?php echo rupiah2($catat['harga_diskon_salon']);?></td>
+                          <td ><?php echo rupiah2($catat['harga_total_nonpkb_salon']);?></td>
                           
                         </tr>
                     <?php }?>
@@ -51,7 +51,7 @@
                   <div class="form-group">
                       <div class="modal-footer">
                       <div class="but">
-                                    <button type="button" class="btn btn-primary" name="close" onclick="$('#ModalPanelShow').modal('hide');">Close</button>
+                                    <button type="button" class="btn btn-primary" name="close" onclick="$('#ModalSalonShow').modal('hide');">Close</button>
                      </div>
                      </div>
                      </div>

@@ -43,6 +43,7 @@
               <li class="header"><a href="?p=kwitansior">Kwitansi OR</a></li>   
                <li class="header"><a href="?p=cash">Cash</a></li> 
                <li class="header"><a href="?p=bank">Bank</a></li> 
+               <li class="header"><a href="?p=paycuci">Payment Non PKB</a></li> 
               <li class="header"><a href="?p=gatepass">Gate Pass</a></li> 
                           </ul>
           </li><?php } ?>

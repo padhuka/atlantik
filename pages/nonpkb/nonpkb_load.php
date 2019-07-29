@@ -34,13 +34,12 @@
                           <td >
                                         <?php if ($catat['approved']==0){?>
                                         <button type="button" class="btn btn btn-default btn-circle" id="<?php echo $catat['id_nonpkb']; ?>" onclick="open_modal(idnonpkb='<?php echo $catat['id_nonpkb']; ?>');"><span>Edit</span></button>
-
-                                       <!-- 
-                                        <button type="button" class="btn btn btn-default btn-circle" id="<?php //echo $catat['id_nonpkb']; ?>" onclick="open_approved(idnonpkb='<?php //echo $catat['id_nonpkb']; ?>');"><span>Approve</span></button>
-                                        <?php } ?>-->
+                                       <!--
+                                        <button type="button" class="btn btn btn-default btn-circle" id="<?php //echo $catat['id_nonpkb']; ?>" onclick="open_approved(idnonpkb='<?php //echo $catat['id_nonpkb']; ?>');"><span>Approve</span></button>-->
+                                        <?php } ?>
 
                                       <?php if ($catat['approved']==1 && $catat['pkb_batal']!='0000-00-00 00:00:00' ){?>
-                                        <button type="button" class="btn btn btn-default btn-circle" id="<?php echo $catat['id_nonpkb']; ?>" onclick="open_del(idnonpkb='<?php echo $catat['id_nonpkb']; ?>');"><span>Batal</span></button> 
+                                        <button type="button" class="btn btn btn-default btn-circle" id="<?php echo $catat['id_nonpkb']; ?>" onclick="open_del(idnonpkb='<?php echo $catat['id_nonpkb']; ?>');"><span>Batal</span></button>
                                          <?php } ?>
 
                                          <button type="button" class="btn btn btn-default btn-circle" id="<?php echo $catat['id_nonpkb']; ?>" onclick="cetak_est(idnonpkb='<?php echo $catat['id_nonpkb']; ?>');"><span>Cetak</span></button>

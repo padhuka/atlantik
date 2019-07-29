@@ -3,33 +3,33 @@
    // include_once '../../lib/sess.php';
     include_once '../../lib/config.php';
     include_once '../../lib/fungsi.php';
-    $idestimasi= $_GET['idestimasi'];
- //   $sqlpan= "SELECT * FROM t_estimasi WHERE id_estimasi='$idestimasi'";
+    $idnonpkb= $_GET['idnonpkb'];
+ //   $sqlpan= "SELECT * FROM t_nonpkb WHERE id_nonpkb='$idnonpkb'";
  //  $catat= mysql_fetch_array(mysql_query($sqlpan));
   
    ?>
 <div class="modal-dialog">
            <div class="modal-content">
                     <div class="modal-header">
-                        <h4 class="modal-title" id="myModalLabel" style="text-align: center;padding-right: 0px">Data Estimasi <button type="button" class="close" aria-label="Close" onclick="$('#ModalShow').modal('hide');"><span>&times;</span></button></h4>                    
+                        <h4 class="modal-title" id="myModalLabel" style="text-align: center;padding-right: 0px">Data Non PKB <button type="button" class="close" aria-label="Close" onclick="$('#ModalShow').modal('hide');"><span>&times;</span></button></h4>                    
                     </div>
                   <?php
                                     $j=1;
-                                    $sqlcatat = "SELECT * FROM t_estimasi e 
+                                    $sqlcatat = "SELECT * FROM t_nonpkb e 
                                                   left join t_customer c
                                                   on e.fk_customer=c.id_customer
-                                                  where e.id_estimasi='$idestimasi'";
+                                                  where e.id_nonpkb='$idnonpkb'";
                                     $rescatat = mysql_query( $sqlcatat );
                                     while($catat = mysql_fetch_array( $rescatat )){
                                 ?>
                     <div class="modal-body">
-                      <div class="modal-title-detail">ESTIMASI PKB</div>
+                      <div class="modal-title-detail">Non PKB</div>
                       <div class="row">
                        <div class="col-sm-6">
-                       <table id="estimasishow" class="table table-condensed table-bordered table-striped table-hover">
+                       <table id="nonpkbshow" class="table table-condensed table-bordered table-striped table-hover">
                        <td>
                          <th class="col-sm-6">
-                        <tr> <th>No Estimasi</th> <td ><?php echo $catat['id_estimasi'];?></td></tr>
+                        <tr> <th>No Non PKB</th> <td ><?php echo $catat['id_nonpkb'];?></td></tr>
                         <tr> <th>Tgl Masuk</th> <td ><?php echo $catat['tgl'];?></td></tr>
                         <tr> <th>No Chasis</th>  <td ><?php echo $catat['fk_no_chasis'];?></td></tr>
                         <tr> <th>No Mesin</th> <td ><?php echo $catat['fk_no_mesin'];?></td></tr>
@@ -38,9 +38,9 @@
                        </td>
                       </table>
                            </div>
-
+                          <!--
                             <div class="col-sm-6">
-                               <table id="estimasishow" class="table table-condensed table-bordered table-striped table-hover">
+                               <table id="nonpkbshow" class="table table-condensed table-bordered table-striped table-hover">
                           <td>
                          <th class="col-sm-6">
                         <tr> <th>Kategori </th> <td ><?php echo $catat['kategori'];?></td></tr>
@@ -51,31 +51,31 @@
                         </th>
                        </td>
                                </table>
-                         </div>
+                         </div>-->
 
                       </div>
 
-                       <div class="modal-title-detail">NILAI ESTIMASI </div>
+                       <div class="modal-title-detail">NILAI NON PKB </div>
                       <div class="row">
                        <div class="col-sm-12">
-                       <table id="estimasishow" class="table table-condensed table-bordered table-striped table-hover">
+                       <table id="nonpkbshow" class="table table-condensed table-bordered table-striped table-hover">
                        <td >
                          <th class="col-sm-2">
                         <tr> 
-                            <th>Nilai Panel</th><td><?php echo rupiah2($catat['total_gross_harga_panel']);?></td> 
-                            <th>Disc</th><td ><?php echo rupiah2($catat['total_diskon_rupiah_panel']);?></td>
-                            <th>Total Netto</th> <td><?php echo rupiah2($catat['total_netto_harga_panel']);?></td>
+                            <th>Cuci</th><td><?php echo rupiah2($catat['total_gross_harga_cuci']);?></td> 
+                            <th>Disc</th><td ><?php echo rupiah2($catat['total_diskon_rupiah_cuci']);?></td>
+                            <th>Total Netto</th> <td><?php echo rupiah2($catat['total_netto_harga_cuci']);?></td>
                         </tr>
                         
                         <tr> 
-                          <th>Nilai Part</th><td><?php echo rupiah2($catat['total_gross_harga_part']);?></td>
-                          <th>Disc</th> <td><?php echo rupiah2($catat['total_diskon_rupiah_part']);?></td>
-                          <th>Total Netto</th> <td><?php echo rupiah2($catat['total_netto_harga_part']);?></td>
+                          <th>Salon</th><td><?php echo rupiah2($catat['total_gross_harga_salon']);?></td>
+                          <th>Disc</th> <td><?php echo rupiah2($catat['total_diskon_rupiah_salon']);?></td>
+                          <th>Total Netto</th> <td><?php echo rupiah2($catat['total_netto_harga_salon']);?></td>
                         </tr>
                         <tr class="total"> 
-                          <th>Total Gross</th><td><?php echo rupiah2($catat['total_gross_harga_jasa']);?></td>
-                          <th>Total Diskon</th> <td><?php echo rupiah2($catat['total_diskon_rupiah_jasa']);?></td>
-                          <th>Total Netto</th> <td><?php echo rupiah2($catat['total_netto_harga_jasa']);?></td>
+                          <th>Total Gross</th><td><?php echo rupiah2($catat['total_gross_harga_salon']);?></td>
+                          <th>Total Diskon</th> <td><?php echo rupiah2($catat['total_diskon_rupiah_salon']);?></td>
+                          <th>Total Netto</th> <td><?php echo rupiah2($catat['total_netto_harga_salon']);?></td>
                         </tr>
 
                         </th>
@@ -87,8 +87,8 @@
                         <div class="form-group">
                      <div class="modal-footer">
                      <div class="but">
-                                    <button type="button" class="btn btn-primary" name="part" onclick="partshow('<?php echo $idestimasi;?>');">&nbsp;Part&nbsp;</button>
-                                    <button type="button" class="btn btn-primary" name="panel" onclick="panelshow('<?php echo $idestimasi;?>');">Panel</button>
+                                    <button type="button" class="btn btn-primary" name="Cuci" onclick="Cucishow('<?php echo $idnonpkb;?>');">&nbsp;Cuci&nbsp;</button>
+                                    <button type="button" class="btn btn-primary" name="Salon" onclick="Salonshow('<?php echo $idnonpkb;?>');">Salon</button>
                      </div>
                      </div>
                      </div>
@@ -102,27 +102,27 @@
                </div>
            </div>
            </div>      
-           <div id="ModalPanelShow" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true"></div>
-           <div id="ModalPartShow" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true"></div>
+           <div id="ModalSalonShow" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true"></div>
+           <div id="ModalCuciShow" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true"></div>
 <script type="text/javascript">
   
-            function partshow(y){
+            function Cucishow(y){
               $.ajax({
-                    url: "estimasi/part_show_tab.php?idestimasine="+y,
+                    url: "nonpkb/cuci_show_tab.php?idnonpkbne="+y,
                     type: "GET",
                       success: function (ajaxData){
-                        $("#ModalPartShow").html(ajaxData);
-                        $("#ModalPartShow").modal({backdrop: 'static', keyboard:false});
+                        $("#ModalCuciShow").html(ajaxData);
+                        $("#ModalCuciShow").modal({backdrop: 'static', keyboard:false});
                       }
                     });
               }
-              function panelshow(z){
+              function Salonshow(z){
               $.ajax({
-                    url: "estimasi/panel_show_tab.php?idestimasine="+z,
+                    url: "nonpkb/salon_show_tab.php?idnonpkbne="+z,
                     type: "GET",
                       success: function (ajaxData){
-                        $("#ModalPanelShow").html(ajaxData);
-                        $("#ModalPanelShow").modal({backdrop: 'static', keyboard:false});
+                        $("#ModalSalonShow").html(ajaxData);
+                        $("#ModalSalonShow").modal({backdrop: 'static', keyboard:false});
                       }
                     });
               }

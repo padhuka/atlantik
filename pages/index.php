@@ -40,6 +40,7 @@
                         case 'cuci' : include_once 'cuci/cuci_tab.php'; break;
                         case 'salon' : include_once 'salon/salon_tab.php'; break;
                         case 'nonpkb' : include_once 'nonpkb/nonpkb_tab.php'; break;
+                        case 'paycuci' : include_once 'paycuci/paycuci_tab.php'; break;
                       }
         ?>
 
