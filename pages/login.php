@@ -88,7 +88,7 @@ include_once '../lib/setting.php';
                                 <div class="form-group">
                                     <div class="col-md-12 control">
                                         <div style="border-top: 1px solid#888; padding-top:15px; font-size:14px; font-style: italic;" >
-                                        GEMILANG Body Repair - Semarang 
+                                        Atlantic Body Repair & Car Wash
                                         
                                         </div>
                                     </div>
