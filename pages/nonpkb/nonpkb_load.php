@@ -52,7 +52,7 @@
               <script>
             $('#nonpkb1').DataTable({
               "columnDefs": [
-                  { "orderable": false, "targets": 7 }
+                  { "orderable": false, "targets": 5 }
                 ],
               "language": {
                       "search": "Cari",
