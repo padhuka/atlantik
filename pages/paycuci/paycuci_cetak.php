@@ -3,6 +3,26 @@
 <head>
   <title></title>
 </head>
+<style type="text/css">
+@media print {
+  /* body * {
+    visibility: hidden;
+  } */
+  #section-to-print, #section-to-print * {
+    visibility: visible;
+    color: white;
+    font-size: 5rem;
+  }
+  #section-to-print {
+    position: absolute;
+    left: -10;
+    top: 0;
+    height:50mm;
+    width:50mm;
+    page-break-after:always;
+  }
+}
+</style>
 <body onload="javascript:window.print()">
 <?php //onload="javascript:window.print()"
    // include_once '../../lib/sess.php';
@@ -18,57 +38,69 @@
                                     $sqlcatat = "SELECT * FROM t_paycuci WHERE no_bukti='$nobukti'";
                                     $rescatat = mysql_query( $sqlcatat );
                                     $catat = mysql_fetch_array( $rescatat );
+                                    $idnonpkb= $catat['no_ref'];
                                 ?>
-                                <table width="100%" align="center" border="0">
+
+                                <span class="hurufe">
+                                <table width="100%" align="left" border="0">
                                   <tr>
-                                    <td width="50%"><u style="font-size: 14px;"><strong>GEMILANG BODY & PAINT</strong><br>
+                                    <td width="50%"><u><strong>Atlantic Repair & Car Wash</strong><br>
                                     </u>
-                                    Jl. Setia Budi No.152 <br>
-                                    Srondol Kulon Semarang
-                                    </td>
-                                    <td width="50%" align="center">
-                                    No. Non PKB : <?php echo $nobukti;?>
+                                    (0271) 7880845 <br>
                                     </td>
                                   </tr> 
                                 </table>
-                      
-                                <hr width="100%" align="center" align="center">
-                                <br><br>
-                                <table width="100%" border="0"  align="center">
-                                  <tr><td class="hurufe" width="30%">Terima Dari</td><td class="hurufe" width="2%">: </td><td class="huruf2"><?php echo $catat['diterima_dari'];?></td></tr>
-                                  <tr><td class="hurufe">Uang Sejumlah</td><td class="hurufe">: </td><td class="huruf2">## <?php echo Terbilang(round($catat['total']));?> rupiah ##</td></tr>
-                                  <tr><td  class="hurufe">Untuk Pembayaran</td><td class="hurufe">: </td><td class="huruf2"><?php echo $catat['keterangan'];?></td></tr>
-                                </table>
+                                ==================================<br>
+                                No. Non PKB : <?php echo $nobukti;?><br>
+                                 ==================================<br>
+                                <?php echo $hrini;?><br>
+                                 ==================================<br>
+                                <table id="nonpkbsalon" class="table table-condensed table-bordered table-striped table-hover">
+                <thead class="thead-light">
+                        <tr><th>No</th><th>Pekerjaan</th><th>Total</th></tr>
+                        </thead>
+                        <tbody>
+                <?php
+                                    $j=1;
+                                    $sqlcatatp = "SELECT * FROM t_nonpkb_salon_detail a LEFT JOIN t_salon p ON a.fk_salon=p.id_salon WHERE a.fk_nonpkb='$idnonpkb'";
+                                    $rescatatp = mysql_query( $sqlcatatp );
+                                    while($catatp = mysql_fetch_array( $rescatatp )){
+                                ?>
+                        <tr>
+                          <td ><?php echo $j++;?>.</td>
+                          <td ><?php echo $catatp['nama'];?></td>
+                          <td align="right"><?php echo rupiah2($catatp['harga_total_nonpkb_salon']);?></td>
+                        </tr>
+                    <?php }
+                           $j=$j;
+                                    $sqlcatat2 = "SELECT * FROM t_nonpkb_cuci_detail a LEFT JOIN t_cuci p ON a.fk_cuci=p.id_cuci WHERE a.fk_nonpkb='$idnonpkb'";
+                                    $rescatat2 = mysql_query( $sqlcatat2 );
+                                    while($catat2 = mysql_fetch_array( $rescatat2 )){
+                                ?>
+                        <tr>
+                          <td ><?php echo $j++;?>.</td>
+                          <td ><?php echo $catat2['nama'];?></td>
+                          <td align="right"><?php echo rupiah2($catat2['harga_total_nonpkb_cuci']);?></td>
+                        </tr>
+                    <?php }?>
+                    <tr style="font-weight: bold;" ><td colspan="2" align="center" style="border-top: dotted;border-width: 1px;">Sub Total Jasa</td><td align="right" style="border-top: dotted;border-width: 1px;"><?php echo rupiah2($catat['total']);?></td></tr>
+                </tfoot>
+              </table>
+              =================================<br>
+                                Terima Dari : <?php echo $catat['diterima_dari'];?><br/>
+                                Tanggal : <?php echo tampilTanggal(substr($catat['tgl_transaksi'],0,10));?><br>
+                                Untuk Pembayaran : <?php echo $catat['keterangan'];?>
                                 <br>
-                                <table width="100%" border="0"  align="center">
-                                    <tr>
-                                      <td>
-                                        <table width="70%" border="1"  align="left">
-                                            <tr>
-                                              <td class="huruf2" align="center"><?php echo rupiah($catat['total']);?></td>
-                                            </tr>
-                                        </table>
-                                      </td>
-                                      <td>
-                                          <table width="100%" border="0"  align="center">
-                                            <tr>
-                                              <td align="center">Semarang, <?php echo tampilTanggal(substr($catat['tgl_transaksi'],0,10));?><br><br><br><br>(&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;)</td>
-                                            </tr>
-                                        </table>
-                                      </td>
-                                    </tr>
-                                </table>
-                                      
-
+                                 
    <style type="text/css">
   .hurufe {
     font-size: 14px;
-    font-weight: bold;
     font-family: monospace;
-    text-align: right;
+    text-align: left;
+    width: 5.8px;
   }
   .huruf2 {
-    font-size: 18px;
+    font-size: 8px;
     font-weight: bold;
     font-family: monospace;
   }
