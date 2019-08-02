@@ -32,6 +32,23 @@
                     <tr align="center" style="font-weight: bold; font-size: 16px;">
                         <td>Report</td><td>Field</td><td></td>
                     </tr>
+                     <tr>
+                        <td width="30%" >&nbsp;<label style="font-size: 16px;">Penjualan Non PKB</label></td><td>
+                              <table border="0"><tr><td>Periode :</td><td><div class="input-group date">
+                            <div class="input-group date">
+                              <div class="input-group-addon">
+                                <i class="fa fa-calendar"></i>
+                              </div>
+                              <input type="text" class="form-control pull-right" id="tglnonpkb1" name="tglnonpkb1" required value="<?php echo $harinow;?>">
+                            </div></td><td>-</td><td><div class="input-group date">
+                            <div class="input-group date">
+                              <div class="input-group-addon">
+                                <i class="fa fa-calendar"></i>
+                              </div>
+                              <input type="text" class="form-control pull-right" id="tglnonpkb2" name="tglnonpkb2" required value="<?php echo $harinow;?>">
+                            </div> </td></tr></table>
+                            </td><td align="center" style="font-weight: bold; font-size: 14px;"><span style="cursor: pointer;" onclick="ekspornonpkb()">Generate</span></strong></span></td>
+                    </tr>
                     <tr>
                         <td width="30%" >&nbsp;<label style="font-size: 16px;">Estimasi</label></td><td>
                               <table border="0"><tr><td>Periode :</td><td><div class="input-group date">
@@ -177,6 +194,24 @@
                             </div> </td></tr></table>
                             </td><td align="center" style="font-weight: bold; font-size: 14px;"><span style="cursor: pointer;" onclick="eksporbank()">Generate</span></strong></span></td>
                     </tr>
+                    <tr>
+
+                            <td width="30%" >&nbsp;<label style="font-size: 16px;">Pembayaran Non PKB</label></td><td>
+                              <table border="0"><tr><td>Periode :</td><td><div class="input-group date">
+                            <div class="input-group date">
+                              <div class="input-group-addon">
+                                <i class="fa fa-calendar"></i>
+                              </div>
+                              <input type="text" class="form-control pull-right" id="tglnonbank1" name="tglnonbank1" required value="<?php echo $harinow;?>">
+                            </div></td><td>-</td><td><div class="input-group date">
+                            <div class="input-group date">
+                              <div class="input-group-addon">
+                                <i class="fa fa-calendar"></i>
+                              </div>
+                              <input type="text" class="form-control pull-right" id="tglnonbank2" name="tglnonbank2" required value="<?php echo $harinow;?>">
+                            </div> </td></tr></table>
+                            </td><td align="center" style="font-weight: bold; font-size: 14px;"><span style="cursor: pointer;" onclick="ekspornonbank()">Generate</span></strong></span></td>
+                    </tr>
 
                      <tr>
 
@@ -253,12 +288,16 @@
     <!-- /.content -->
   </div>
   <script type="text/javascript">
+    $('#tglnonpkb1').datepicker({format: 'yyyy-mm-dd',autoclose: true,});
+    $('#tglnonpkb2').datepicker({format: 'yyyy-mm-dd',autoclose: true,});
     $('#tglestimasi1').datepicker({format: 'yyyy-mm-dd',autoclose: true,});
     $('#tglestimasi2').datepicker({format: 'yyyy-mm-dd',autoclose: true,});
     $('#tglcash1').datepicker({format: 'yyyy-mm-dd',autoclose: true,});
     $('#tglcash2').datepicker({format: 'yyyy-mm-dd',autoclose: true,});
     $('#tglbank1').datepicker({format: 'yyyy-mm-dd',autoclose: true,});
     $('#tglbank2').datepicker({format: 'yyyy-mm-dd',autoclose: true,});
+    $('#tglnonbank1').datepicker({format: 'yyyy-mm-dd',autoclose: true,});
+    $('#tglnonbank2').datepicker({format: 'yyyy-mm-dd',autoclose: true,});
     $('#tglpkb1').datepicker({format: 'yyyy-mm-dd',autoclose: true,});
     $('#tglpkb2').datepicker({format: 'yyyy-mm-dd',autoclose: true,});
     $('#tglpkb1a').datepicker({format: 'yyyy-mm-dd',autoclose: true,});
@@ -276,6 +315,11 @@
     $('#tgllabarugi1').datepicker({format: 'yyyy-mm-dd',autoclose: true,});
     $('#tgllabarugi2').datepicker({format: 'yyyy-mm-dd',autoclose: true,});
 
+    function ekspornonpkb(){
+      var x =$('#tglnonpkb1').val(); var y= $('#tglnonpkb2').val();      
+      window.location = "laporan/ekspor_nonpkb.php?tgl1="+x+"&tgl2="+y;
+    }
+
     function eksporestimasi(){
       var x =$('#tglestimasi1').val(); var y= $('#tglestimasi2').val();      
       window.location = "laporan/ekspor_estimasi.php?tgl1="+x+"&tgl2="+y;
@@ -289,6 +333,10 @@
     function eksporbank(){
       var x =$('#tglbank1').val(); var y= $('#tglbank2').val();      
       window.location = "laporan/ekspor_bank.php?tgl1="+x+"&tgl2="+y;
+    }
+    function ekspornonbank(){
+      var x =$('#tglnonbank1').val(); var y= $('#tglnonbank2').val();      
+      window.location = "laporan/ekspor_paymentnonpkb.php?tgl1="+x+"&tgl2="+y;
     }
     function eksporpkb(){
       var x =$('#tglpkb1').val(); var y= $('#tglpkb2').val();      
