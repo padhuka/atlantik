@@ -26,7 +26,14 @@
                             <input type="text" class="form-control" id="tgl" name="tgl" value="<?php echo tampilTanggal($harinow);?>" readonly>
                           </div>
                         </div>
-                        
+                        <div class="form-group">
+                          <div class="col-sm-3">
+                            <label for="nmkendaraan">Tipe Kendaraan</label>
+                          </div>
+                          <div class="col-sm-7">
+                            <input type="text" class="form-control" id="nmmobil" name="nmmobil" >
+                          </div>
+                        </div>
                         <div class="form-group">
                           <div class="col-sm-3">
                             <label for="namanonpkb">No Polisi</label>

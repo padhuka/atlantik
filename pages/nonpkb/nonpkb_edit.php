@@ -41,6 +41,15 @@
                         </div>
                         <div class="form-group">
                           <div class="col-sm-3">
+                            <label for="namanonpkb">Tipe Kendaraan</label>
+                          </div>
+                          <div class="col-sm-7">
+                            <input type="text" class="form-control" id="nmmobil" name="nmmobil"  value="<?php echo $catat['namamobil'];?>">
+                          </div>
+                          
+                        </div>
+                        <div class="form-group">
+                          <div class="col-sm-3">
                             <label for="namanonpkb">No Polisi</label>
                           </div>
                           <div class="col-sm-7">

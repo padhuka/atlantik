@@ -9,6 +9,7 @@
         $uname = trim($_POST['uname']);
         $customer = trim($_POST['customer']);
         $tglselesai = trim($_POST['tglselesai']);
+        $namamobil = trim($_POST['nmmobil']);
         //message_back($id_nonpkb);
         //$kodeawal = 'est_'.$hrini.'_';
         $hrn2= date('dmy' , strtotime($hrini));
@@ -41,7 +42,7 @@
         
         $kodebaru = $kodeawal.$kodeakhir;     
         
-        $sqltbemp = "INSERT INTO t_nonpkb (id_nonpkb,fk_no_chasis,fk_no_mesin,fk_no_polisi,fk_user,fk_customer,tgl_nonpkb_selesai) VALUES ('$kodebaru','$chasis','$mesin','$polisi','$uname','$customer','$tglselesai')";
+        $sqltbemp = "INSERT INTO t_nonpkb (id_nonpkb,fk_no_chasis,fk_no_mesin,fk_no_polisi,fk_user,fk_customer,tgl_nonpkb_selesai,namamobil) VALUES ('$kodebaru','$chasis','$mesin','$polisi','$uname','$customer','$tglselesai','$namamobil')";
             mysql_query($sqltbemp);
             echo $kodebaru;
 ?>

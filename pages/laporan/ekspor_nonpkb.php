@@ -37,6 +37,7 @@ header("Content-Disposition: attachment; filename=reportnonpkb.xls");
                           <th>No</th>
                           <th>No Non PKB</th>
                           <th>Tgl Non PKB</th>
+                          <th>Tipe Kendaraan</th>
                           <th>No Chasis</th>
                           <th>No Mesin</th>
                           <th>No Polisi</th>
@@ -61,6 +62,7 @@ header("Content-Disposition: attachment; filename=reportnonpkb.xls");
                           <th><?php echo $j++;?></th>
                           <td><?php echo ($catat['id_nonpkb']);?></td>                       
                           <td><?php echo date('d-m-Y',strtotime($catat['tgl']));?></td>
+                          <td><?php echo $catat['namamobil'];?></td>
                           <td><?php echo $catat['fk_no_chasis'];?></td>
                           <td><?php echo $catat['fk_no_mesin'];?></td>                          
                           <td><?php echo $catat['fk_no_polisi'];?></td>

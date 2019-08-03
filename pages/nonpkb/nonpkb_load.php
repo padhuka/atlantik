@@ -8,6 +8,7 @@
                           <th>No</th>
                           <th>No Non PKB</th>
                           <th>Tgl Masuk</th>
+                          <th>Tipe Kendaraan</th>
                           <th>No Polisi</th>
                           <th>Total Non PKB</th>
 
@@ -29,6 +30,7 @@
                           <td><button type="button" class="btn btn-link" id="<?php echo $catat['id_nonpkb']; ?>" onclick="open_est(idnonpkb='<?php echo $catat['id_nonpkb']; ?>');"><span><?php echo ($catat['id_nonpkb']);?></span></button></td>
                        
                           <td ><?php echo date('d-m-Y' , strtotime($catat['tgl']));?></td>
+                          <td ><?php echo $catat['namamobil'];?></td>
                           <td ><?php echo $catat['fk_no_polisi'];?></td>
                            <td ><?php echo rupiah2($catat['total_netto_harga_jasa']);?></td>
                           <td >
