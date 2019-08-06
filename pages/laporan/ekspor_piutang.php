@@ -17,10 +17,10 @@ header("Content-Disposition: attachment; filename=reportpiutang.xls");
       ?>
       <table width="100%" align="center" border="0">
                                   <tr>
-                                    <td width="50%"><u style="font-size: 20px;"><strong>GEMILANG BODY & PAINT</strong><br>
+                                    <td width="50%"><u style="font-size: 20px;"><strong>Atlantic Repair & Car Wash</strong><br>
                                     </u>
-                                    Jl. Setia Budi No.152 <br>
-                                    Srondol Kulon Semarang
+                                    (0271) 7880845 <br>
+                                    
                                     </td>
                                     <td align="right">
                                       Tanggal : <?php echo $tgle;?><br>
