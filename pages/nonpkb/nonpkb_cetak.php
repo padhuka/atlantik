@@ -32,7 +32,7 @@
                                 </table>
                                 <br/>
                                 <table width="100%" align="center">
-                                  <tr><td width="20%">Merk/Tipe</td><td width="29%">: <?php echo $catat['nmgrup'].'/'.$catat['nmtipe'];?></td><td width="2%"></td><td width="20%">No.Rangka</td><td width="29%">: <?php echo $catat['fk_no_chasis'];?></td></tr>
+                                  <tr><td width="20%">Merk/Tipe</td><td width="29%">: <?php echo $catat['namamobil'];?></td><td width="2%"></td><td width="20%">No.Rangka</td><td width="29%">: <?php echo $catat['fk_no_chasis'];?></td></tr>
                                   <tr><td>No.Polisi</td><td>: <?php echo $catat['fk_no_polisi'];?></td><td></td><td>No. Mesin</td><td>: <?php echo $catat['fk_no_mesin'];?></td></tr>
                                   <!--<tr><td>Pemilik</td><td>: <?php echo $catat['nama'];?></td><td></td><td>Warna</td><td>: <?php echo $catat['warna'];?></td></tr>
                                   <tr><td>No. Telephone</td><td>: <?php echo $catat['no_telp'];?></td><td></td><td>KM</td><td>: <?php echo $catat['km_masuk'];?></td></tr>
@@ -89,13 +89,10 @@
                                    <tr><td width="50%" align="center"></td><td width="50%" align="center"><?php echo date('d-m-Y' , strtotime($catat['tgl']));?></td></tr>
                                 </table>
                                  <table width="100%" align="center" border="0" cellspacing="0" cellpadding="0">
-                                   <tr><td width="50%" align="center">Menyetujui<br><br><br><br>(&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;)</td><td width="50%" align="center">Hormat Kami<br><br><br><br>(&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;)</td></tr>
+                                   <tr><td width="50%" align="center"><br><br><br><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td><td width="50%" align="center">Hormat Kami<br><br><br><br>(&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;)</td></tr>
                                  </table><br>
                                  <table width="60%" align="center" border="0" cellspacing="0" cellpadding="0">
-                                   <tr><td>PERHATIAN<br>
-1. Perkiraan Tersebut diatas berdasarkan apa yang dapat diketahui sementara, dan <br>dapat berubah sesuai keadaan yang sebenarnya pada saat pelaksanaan kerja perbaikan<br>
-2. Perbaikan baru dapat dilaksanakan jika sudah ada surat perintah kerja (SPK)
-                                   </td></tr>
+                                   
                                  </table>
                                
 </body>
