@@ -32,12 +32,8 @@
                                 </table>
                                 <br/>
                                 <table width="100%" align="center">
-                                  <tr><td width="20%">Merk/Tipe</td><td width="29%">: <?php echo $catat['namamobil'];?></td><td width="2%"></td><td width="20%">No.Rangka</td><td width="29%">: <?php echo $catat['fk_no_chasis'];?></td></tr>
-                                  <tr><td>No.Polisi</td><td>: <?php echo $catat['fk_no_polisi'];?></td><td></td><td>No. Mesin</td><td>: <?php echo $catat['fk_no_mesin'];?></td></tr>
-                                  <!--<tr><td>Pemilik</td><td>: <?php echo $catat['nama'];?></td><td></td><td>Warna</td><td>: <?php echo $catat['warna'];?></td></tr>
-                                  <tr><td>No. Telephone</td><td>: <?php echo $catat['no_telp'];?></td><td></td><td>KM</td><td>: <?php echo $catat['km_masuk'];?></td></tr>
-                                  <tr><td>Asuransi</td><td>: <?php echo $catat['nmasuransi'];?></td><td></td><td>No. Polis</td><td>:</td></tr>
-                                  <tr><td></td><td></td><td></td><td>No. Claim</td><td>:</td></tr>-->
+                                  <tr><td width="20%">Merk/Tipe</td><td width="29%">: <?php echo $catat['namamobil'];?></td><td width="2%"></td><td width="20%"></td><td width="29%"></td></tr>
+                                  <tr><td>No.Polisi</td><td>: <?php echo $catat['fk_no_polisi'];?></td><td></td></tr>
                                 </table>
                                 <br/>
                                 <table width="100%" align="center" border="1" cellspacing="0" cellpadding="0">
