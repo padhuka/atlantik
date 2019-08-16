@@ -1,8 +1,8 @@
 <?php
 		//$skrg = date('Y-m-d');
         include_once '../../lib/config.php';
-        $idestimasi = $_GET['idestimasi'];
+        $idnonpkb = $_GET['idnonpkb'];
         
-            $updateestimasi = "UPDATE t_estimasi SET tgl_batal='$hrini' WHERE id_estimasi='$idestimasi'";
-            mysql_query($updateestimasi);
+            $updatenonpkb = "UPDATE t_nonpkb SET tgl_batal='$hrini' WHERE id_nonpkb='$idnonpkb'";
+            mysql_query($updatenonpkb);
 ?>

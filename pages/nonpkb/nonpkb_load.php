@@ -19,7 +19,7 @@
                 <tbody>
                 <?php
                                     $j=1;
-                                    $sqlcatat = "SELECT * FROM t_nonpkb
+                                    $sqlcatat = "SELECT * FROM t_nonpkb WHERE tgl_batal ='0000-00-00 00:00:00'
                                     ORDER BY tgl DESC";
                                     $rescatat = mysql_query( $sqlcatat );
                                     while($catat = mysql_fetch_array( $rescatat )){
@@ -40,7 +40,7 @@
                                         <button type="button" class="btn btn btn-default btn-circle" id="<?php //echo $catat['id_nonpkb']; ?>" onclick="open_approved(idnonpkb='<?php //echo $catat['id_nonpkb']; ?>');"><span>Approve</span></button>-->
                                         <?php } ?>
 
-                                      <?php if ($catat['approved']==1 && $catat['pkb_batal']!='0000-00-00 00:00:00' ){?>
+                                      <?php if ($catat['approved']==1 && $catat['tgl_batal']!='0000-00-00 00:00:00' ){?>
                                         <button type="button" class="btn btn btn-default btn-circle" id="<?php echo $catat['id_nonpkb']; ?>" onclick="open_del(idnonpkb='<?php echo $catat['id_nonpkb']; ?>');"><span>Batal</span></button>
                                          <?php } ?>
 

@@ -1,8 +1,8 @@
 <?php
     include_once '../../lib/config.php';
     //include_once '../../lib/fungsi.php';
-    $id = $_GET['idestimasi'];
-    $sqlemp = "SELECT * FROM t_estimasi WHERE id_estimasi='$id'";
+    $id = $_GET['idnonpkb'];
+    $sqlemp = "SELECT * FROM t_nonpkb WHERE id_nonpkb='$id'";
     $resemp = mysql_query( $sqlemp );
     $emp = mysql_fetch_array( $resemp );
 
@@ -11,7 +11,7 @@
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h4 class="modal-title" id="myModalLabel" style="text-align: center;padding-right: 0px">Batal Data Estimasi <button type="button" class="close" aria-label="Close" onclick="$('#ModalDelete').modal('hide');"><span>&times;</span></button></h4> 
+                        <h4 class="modal-title" id="myModalLabel" style="text-align: center;padding-right: 0px">Batal Data nonpkb <button type="button" class="close" aria-label="Close" onclick="$('#ModalDelete').modal('hide');"><span>&times;</span></button></h4> 
                     </div>
                         <div class="panel-body">
 
@@ -38,13 +38,13 @@
                   $(document).ready(function (){
                         $(".save_submit").click(function (e){
                            $.ajax({
-                                url: 'estimasi/estimasi_del_save.php?idestimasi=<?php echo $id;?>',
+                                url: 'nonpkb/nonpkb_del_save.php?idnonpkb=<?php echo $id;?>',
                                 type: 'GET',
                                 success: function (response){
                                       //alert('panel/panel_del_save.php?id_panel='+id_panel);
-                                     $("#tableestimasi").load('estimasi/estimasi_load.php');
+                                     $("#tablenonpkb").load('nonpkb/nonpkb_load.php');
                                      $('.modal-body').css('opacity', '');
-                                      alert('Estimasi Berhasil Di Batalkan');
+                                      alert('nonpkb Berhasil Di Batalkan');
                                       $('#ModalDelete').modal('hide');
                                   }
                             });
