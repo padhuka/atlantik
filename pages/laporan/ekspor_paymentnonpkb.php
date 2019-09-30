@@ -40,6 +40,8 @@ header("Content-Disposition: attachment; filename=reportpembayarannonpkb.xls");
                           <th>Cara Bayar</th>
                           <th>Di Terima Dari</th>
                           <th>No Ref</th>
+                          <th>No Polisi</th>
+                          <th>Mobil</th>
                           <th>Total</th>
                           <th>Keterangan</th>
                 </tr>
@@ -50,8 +52,9 @@ header("Content-Disposition: attachment; filename=reportpembayarannonpkb.xls");
                                     $tgl2=$_GET['tgl2'];
                                     $j=1;
                                     $jml=0;
-                                    $sqlcatat = "SELECT * FROM t_paycuci
-                                    WHERE tgl_batal='0000:00:00 00:00:00' AND substring(tgl_transaksi,1,10)>='$tgl1' AND  substring(tgl_transaksi,1,10)<='$tgl2' ORDER BY no_bukti DESC";
+                                    $sqlcatat = "SELECT * FROM t_paycuci p 
+                                    LEFT JOIN t_nonpkb n ON p.no_ref=n.id_nonpkb
+                                     WHERE p.tgl_batal='0000:00:00 00:00:00' AND substring(tgl_transaksi,1,10)>='$tgl1' AND  substring(tgl_transaksi,1,10)<='$tgl2' ORDER BY p.no_bukti DESC";
                                     $rescatat = mysql_query( $sqlcatat );
                                     while($catat = mysql_fetch_array( $rescatat )){
                                       $jml=$jml+$catat['total'];  
@@ -63,7 +66,8 @@ header("Content-Disposition: attachment; filename=reportpembayarannonpkb.xls");
                           <td ><?php echo $catat['via_bayar'];?></td>
                           <td ><?php echo $catat['diterima_dari'];?></td>
                           <td ><?php echo $catat['no_ref'];?></td>
-                          
+                          <td ><?php echo $catat['fk_no_polisi'];?></td>
+                          <td ><?php echo $catat['namamobil'];?></td>
                            <td ><?php echo rupiah2($catat['total']);?></td>
                            <td ><?php echo $catat['keterangan'];?></td>
                         </tr>

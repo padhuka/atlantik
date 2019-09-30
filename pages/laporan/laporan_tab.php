@@ -156,7 +156,11 @@
                               
                             </td><td align="center" style="font-weight: bold; font-size: 14px;"><span style="cursor: pointer;" onclick="eksporpiutang()">Generate</span></strong></span></td>
                     </tr>
-                    
+                     <tr>
+                        <td width="30%" >&nbsp;<label style="font-size: 16px;">Piutang Non PKB</label></td><td>
+                              
+                            </td><td align="center" style="font-weight: bold; font-size: 14px;"><span style="cursor: pointer;" onclick="eksporpiutangnonpkb()">Generate</span></strong></span></td>
+                    </tr>
                     <tr>
                         <td width="30%" >&nbsp;<label style="font-size: 16px;">Pembayaran Cash</label></td><td>
                               <table border="0"><tr><td>Periode :</td><td><div class="input-group date">
@@ -365,6 +369,10 @@
      function eksporpiutang(){
       var x =$('#tglpiutang1').val(); var y= $('#tglpiutang2').val();      
       window.location = "laporan/ekspor_piutang.php?tgl1="+x+"&tgl2="+y;
+    }
+      function eksporpiutangnonpkb(){
+      var x =$('#tglpiutangnonpkb1').val(); var y= $('#tglpiutangnonpkb2').val();      
+      window.location = "laporan/ekspor_piutang_nonpkb.php?tgl1="+x+"&tgl2="+y;
     }
      function eksporpenjualan(){
       var x =$('#tglpenj1').val(); var y= $('#tglpenj2').val();      
