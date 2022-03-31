@@ -48,15 +48,7 @@
             $nilaior = $hsl['nilai_kwitansi'];
 
 
-            $tgl_pkb = date('Y-m-d');
-            $tgl = '2022-04-01';
-
-            if ($tgl_pkb < $tgl ){
-                $ppn = $nettototal*10/100;
-            }
-            if ($tgl_pkb >= $tgl ){
-                $ppn = $nettototal*11/100;
-            }
+            $ppn = $nettototal*11/100;
             $payment = $nettototal+$ppn;
 
         
