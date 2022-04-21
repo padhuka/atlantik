@@ -93,7 +93,7 @@
                             $kali = 1.11;
                           }
                          echo rupiah2($ppn*$catat['total_netto_harga_jasa']);?></td></tr>
-                        <tr><td colspan="2" align="center">Total Jasa</td><td align="right"><?php echo rupiah2((110/100)*$catat['total_netto_harga_jasa']);?></td></tr>
+                        <tr><td colspan="2" align="center">Total Jasa</td><td align="right"><?php echo rupiah2($kali*$catat['total_netto_harga_jasa']);?></td></tr>
                 </tfoot>
               </table>
                        <div class="form-group">
