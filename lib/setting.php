@@ -2,7 +2,7 @@
 	// DATA BASE
 	$user="root"; // userid untuk akses database anda
 	$db="atlanticdb"; // nama database anda.
-	$passsw="s0l0b4ru"; // password untuk akses database anda
+	$passsw=""; // password untuk akses database anda
 	// baris dibawah ini jangan diedit
 	$host="localhost";
 
