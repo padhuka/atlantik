@@ -48,8 +48,8 @@
             $nilaior = $hsl['nilai_kwitansi'];
 
 
-            // $ppn = $nettototal*11/100;
-            $ppn = 0;
+            $ppn = $nettototal*11/100;
+            //$ppn = 0;
             $payment = $nettototal+$ppn;
 
         
