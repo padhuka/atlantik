@@ -24,10 +24,39 @@
                 <tbody>
                                 <?php
                                     $j=1;
-                                    $sqlcatat = "SELECT e.*,c.* FROM t_estimasi e 
-                                     LEFT JOIN t_customer c ON e.fk_customer=c.id_customer 
-                                     LEFT JOIN (SELECT * from t_pkb where tgl_batal='0000-00-00 00:00:00') as p ON e.id_estimasi=p.fk_estimasi
-                                     WHERE e.tgl_batal='0000-00-00 00:00:00' AND e.approved='1' AND p.fk_estimasi IS NULL ";
+                                    // $sqlcatat = "SELECT e.*,c.* FROM t_estimasi e 
+                                    //  LEFT JOIN t_customer c ON e.fk_customer=c.id_customer 
+                                    //  LEFT JOIN (SELECT * from t_pkb where tgl_batal='0000-00-00 00:00:00') as p ON e.id_estimasi=p.fk_estimasi
+                                    //  WHERE e.tgl_batal='0000-00-00 00:00:00' AND e.approved='1' AND p.fk_estimasi IS NULL ";
+                                     $sqlcatat = "SELECT 
+                                    e.id_estimasi as id_estimasi,
+                                    e.fk_no_chasis as fk_no_chasis,
+                                    e.fk_no_mesin as fk_no_mesin,
+                                    e.fk_no_polisi as fk_no_polisi,
+                                    c.nama AS nama,
+                                    e.kategori AS kategori,
+                                    e.km_masuk AS km_masuk,
+                                    e.fk_asuransi AS fk_asuransi,
+                                    c.no_telp AS no_telp,
+                                    e.tgl AS tgl,
+                                    e.total_gross_harga_panel AS total_gross_harga_panel,
+                                    e.total_diskon_rupiah_panel AS total_diskon_rupiah_panel,
+                                    e.total_netto_harga_panel AS total_netto_harga_panel,
+                                    e.total_gross_harga_part AS total_gross_harga_part,
+                                    e.total_diskon_rupiah_part AS total_diskon_rupiah_part,
+                                    e.total_netto_harga_part AS total_netto_harga_part,
+                                    e.total_gross_harga_jasa AS total_gross_harga_jasa,
+                                    e.total_diskon_rupiah_jasa AS total_diskon_rupiah_jasa,
+                                    e.total_netto_harga_jasa AS total_netto_harga_jasa
+                                FROM t_estimasi e
+                                LEFT JOIN t_customer c 
+                                    ON e.fk_customer = c.id_customer
+                                LEFT JOIN t_pkb p 
+                                    ON e.id_estimasi = p.fk_estimasi
+                                    AND p.tgl_batal = '0000-00-00 00:00:00'
+                                WHERE e.tgl_batal = '0000-00-00 00:00:00'
+                                  AND e.approved = '1'
+                                  AND p.fk_estimasi IS NULL";
                                     $rescatat = mysql_query( $sqlcatat );
                                     while($catat = mysql_fetch_array( $rescatat )){
                                 ?>
