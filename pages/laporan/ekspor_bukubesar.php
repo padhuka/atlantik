@@ -55,11 +55,13 @@ header("Content-Disposition: attachment; filename=reportbukubesar.xls");
               <table id="tablepkb1" class="table table-condensed table-bordered table-striped table-hover">
                 <thead class="thead-light">
                 <tr>
-                          <th>No</th>
+                           <th>No</th>
                           <th>Kode Transaksi</th>
                           <th>Tanggal Transaksi</th>
                           <th>Nama Rekening</th>
                           <th>Keterangan</th>
+                          <th>No Bukti</th>
+                          <th>Status</th>
                           <th>Tanggal Kirim</th>
                           <th>Terima/Debet</th>
                           <th>Keluar/Kredit</th>
@@ -68,28 +70,44 @@ header("Content-Disposition: attachment; filename=reportbukubesar.xls");
                 </tr>
                 </thead>
                 <tbody>
-                        <?php
-                          $sqlcatat = "SELECT A.coa AS kode, B.tr_date AS tgl,C.tr_date AS tglb, A.description AS nmrek, B.description AS ket, C.description ketb, B.transaction_type AS kredit, C.transaction_type AS kreditb, B.amount AS jmle, C.amount AS jmleb FROM t_akun A
-                                      LEFT JOIN t_acc_cash B ON A.coa=B.fk_akun AND B.tr_date>='$tgl1' AND B.tr_date<='$tgl2' AND B.status<>'Batal'
-                                      LEFT JOIN t_acc_bank C ON A.coa=C.fk_akun AND C.tr_date>='$tgl1' AND C.tr_date<='$tgl2' AND C.status<>'Batal'  
-                                      WHERE (B.no_bukti<>'' OR C.no_bukti<>'') AND A.coa='$catat2[kode]'
-                                      ORDER BY kode";
+                         <?php
+                          $sqlcatat = "SELECT A.coa AS kode, B.tr_date AS tgl,C.tr_date AS tglb, A.description AS nmrek,B.ref_akun AS nmre1, C.ref_akun AS nmre2,  B.description AS ket, C.description ketb, B.transaction_type AS kredit, C.transaction_type AS kreditb, B.amount AS jmle, C.amount AS jmleb, B.status as statusB, C.status as statusC, B.no_Bukti as buktiB, C.no_bukti as buktiC FROM t_akun A 
+                            LEFT JOIN t_acc_cash B ON A.coa=B.fk_akun AND B.tr_date>='$tgl1' AND B.tr_date<='$tgl2' AND B.status<>'Batal'AND B.no_bukti<>''
+                            LEFT JOIN t_acc_bank C ON A.coa=C.fk_akun AND C.tr_date>='$tgl1' AND C.tr_date<='$tgl2' AND C.status<>'Batal' AND C.no_bukti<>''
+                            WHERE A.coa='$catat2[kode]'
+                            ORDER BY kode";
                                       //echo $sqlcatat;
                                     $rescatat = mysql_query( $sqlcatat );
                                     while($catat = mysql_fetch_array( $rescatat )){
+                                      
                         ?>
-                        <tr>
+                       <tr>
                           <th><?php echo $j++;?></th>                 
                           <td><?php echo $catat['kode'];?></td>
                           <td><?php echo $catat['tgl'];?><?php echo $catat['tglb'];?></td>
-                          <td><?php echo $catat['nmrek'];?></td>
+                          <?php 
+                            if($catat['nmre1']){
+                                $ref = mysql_fetch_array(mysql_query("SELECT description FROM t_akun WHERE coa='$catat[nmre1]'"));
+                            }
+                            if($catat['nmre2']){
+                                $ref = mysql_fetch_array(mysql_query("SELECT description FROM t_akun WHERE coa='$catat[nmre2]'"));
+                            }?>
+                          <td><?php if (isset($ref['description'])){echo $ref['description'];};?></td>
                           <td><?php echo $catat['ket'];?><?php echo $catat['ketb'];?></td>
+                            <td><?php if ($catat['nmre1']) {
+                              echo $catat['buktiB'];
+                            } else {     echo $catat['buktiC'];
+                            }?></td>
+                            <td><?php if ($catat['nmre1']) {
+                              echo $catat['statusB'];
+                            } else {     echo $catat['statusC'];
+                            }?></td>
                           <td><?php //echo rupiah2($catat['jumlah']);?></td>   
-                          <td><?php if ($catat['kredit']=='D') {echo $catat['jmle'];$jmlD=$jmlD+$catat['jmle'];};  if ($catat['kreditb']=='D') {echo $catat['jmleb'];$jmlD=$jmlD+$catat['jmleb'];}?></td>
+                          <td align="right"><?php if ($catat['kredit']=='D') {echo $catat['jmle'];$jmlD=$jmlD+$catat['jmle'];};  if ($catat['kreditb']=='D') {echo $catat['jmleb'];$jmlD=$jmlD+$catat['jmleb'];}?></td>
                           <td><?php if ($catat['kredit']=='C') {echo $catat['jmle'];$jmlC=$jmlC+$catat['jmle'];}; if ($catat['kreditb']=='C') {echo $catat['jmleb'];$jmlC=$jmlC+$catat['jmleb'];}?></td>
                           <td><?php //echo rupiah2($jmlD-$jmlC);?></td>   
                         </tr>
-                    <?php } ;?>
+                    <?php };?>
                     <tr><td colspan="18" align="right">Total</td><td><?php echo rupiah2($jmlD-$jmlC);?></td></tr>
                 </tfoot>
               </table>
